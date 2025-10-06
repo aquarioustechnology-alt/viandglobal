@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://viandglobal.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin areas (if any in future)
+Disallow: /admin/
+Disallow: /api/
+
+# Allow all pages
+Allow: /
+Allow: /about
+Allow: /products
+Allow: /contact
+Allow: /blog
+Allow: /privacy-policy
+Allow: /terms-conditions

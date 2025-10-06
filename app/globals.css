@@ -1,0 +1,647 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-color: hsl(var(--border));
+  }
+  html {
+    font-family: "Rethink Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+  }
+}
+
+/* Custom Font Imports */
+@font-face {
+  font-family: "Rethink Sans";
+  src: url("/fonts/RethinkSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rethink Sans";
+  src: url("/fonts/RethinkSans-Medium.ttf") format("truetype");
+  src: url("/fonts/RethinkSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rethink Sans";
+  src: url("/fonts/RethinkSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rethink Sans";
+  src: url("/fonts/RethinkSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rethink Sans";
+  src: url("/fonts/RethinkSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Navigation link hover animation */
+.nav-link {
+  position: relative;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+/* Custom Button Styles */
+.btn-header {
+  width: 150px;
+  height: 50px;
+  background-color: #ffffff;
+  color: #d50d0d;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-header:hover {
+  background-color: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.btn-primary {
+  width: 220px;
+  height: 60px;
+  background-color: #d50d0d;
+  color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  width: 220px;
+  height: 60px;
+  background-color: #ffffff;
+  color: #d50d0d;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  background-color: transparent;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.btn-tertiary {
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+}
+
+.btn-tertiary:hover {
+  background-color: transparent;
+  border-color: #000000;
+  color: #ffffff;
+}
+
+/* Global Typography System - Rethink Sans */
+/* Override ALL default typography across the website */
+
+/* HEADINGS - Global Override */
+h1,
+.h1,
+h1 *,
+.h1 *,
+[class*="text-"] h1,
+[class*="prose"] h1 {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 3.75rem; /* text-6xl - Mobile: 60px */
+  line-height: 110%;
+  font-weight: 700; /* font-bold */
+}
+
+@media (min-width: 768px) {
+  h1,
+  .h1,
+  h1 *,
+  .h1 *,
+  [class*="text-"] h1,
+  [class*="prose"] h1 {
+    font-size: 4.5rem; /* text-7xl - Tablet: 72px */
+  }
+}
+
+@media (min-width: 1024px) {
+  h1,
+  .h1,
+  h1 *,
+  .h1 *,
+  [class*="text-"] h1,
+  [class*="prose"] h1 {
+    font-size: 6rem; /* text-8xl - Desktop: 96px */
+  }
+}
+
+@media (min-width: 1280px) {
+  h1,
+  .h1,
+  h1 *,
+  .h1 *,
+  [class*="text-"] h1,
+  [class*="prose"] h1 {
+    font-size: 6rem; /* text-8xl - Large Desktop: 96px */
+  }
+}
+
+h2,
+.h2,
+h2 *,
+.h2 *,
+[class*="text-"] h2,
+[class*="prose"] h2 {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 2.25rem; /* text-4xl - Mobile: 36px */
+  line-height: 120%;
+  font-weight: 700; /* font-bold */
+}
+
+@media (min-width: 768px) {
+  h2,
+  .h2,
+  h2 *,
+  .h2 *,
+  [class*="text-"] h2,
+  [class*="prose"] h2 {
+    font-size: 2.25rem; /* text-4xl - Tablet: 36px */
+  }
+}
+
+@media (min-width: 1024px) {
+  h2,
+  .h2,
+  h2 *,
+  .h2 *,
+  [class*="text-"] h2,
+  [class*="prose"] h2 {
+    font-size: 3rem; /* text-5xl - Desktop: 48px */
+  }
+}
+
+@media (min-width: 1280px) {
+  h2,
+  .h2,
+  h2 *,
+  .h2 *,
+  [class*="text-"] h2,
+  [class*="prose"] h2 {
+    font-size: 3rem; /* text-5xl - Large Desktop: 48px */
+  }
+}
+
+h3,
+.h3,
+h3 *,
+.h3 *,
+[class*="text-"] h3,
+[class*="prose"] h3 {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 45px;
+  line-height: 120%;
+  font-weight: 800;
+}
+
+h4,
+.h4,
+h4 *,
+.h4 *,
+[class*="text-"] h4,
+[class*="prose"] h4 {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 34px;
+  line-height: 120%;
+  font-weight: 600;
+}
+
+h5,
+.h5,
+h5 *,
+.h5 *,
+[class*="text-"] h5,
+[class*="prose"] h5 {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 25px;
+  line-height: 120%;
+  font-weight: 600;
+}
+
+h6,
+.h6,
+h6 *,
+.h6 *,
+[class*="text-"] h6,
+[class*="prose"] h6 {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 20px;
+  line-height: 120%;
+  font-weight: 700;
+}
+
+/* BODY TEXT TOKENS - Reusable Typography System */
+.body-small {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 400;
+}
+
+.body-extra-large {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 32px;
+  line-height: 110%;
+  font-weight: 400;
+}
+
+.body-small-bold {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 600;
+}
+
+.body-extra-small {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 14px;
+  line-height: 150%;
+  font-weight: 600;
+}
+
+.body-extra-small-regular {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 14px;
+  line-height: 120%;
+  font-weight: 400;
+}
+
+.body-large {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 24px;
+  line-height: 130%;
+  font-weight: 400;
+}
+
+.body-medium {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  font-weight: 400;
+}
+
+.body-form {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 15px;
+  line-height: 150%;
+  font-weight: 600;
+}
+
+/* Legacy class for backward compatibility */
+.text-16px {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 400;
+}
+
+/* Override Tailwind typography classes */
+.text-xs,
+.text-sm,
+.text-base,
+.text-lg,
+.text-xl,
+.text-2xl,
+.text-3xl,
+.text-4xl,
+.text-5xl,
+.text-6xl {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+/* Ensure all text elements use Rethink Sans */
+p,
+span,
+div,
+a,
+li,
+td,
+th,
+label,
+input,
+textarea,
+button {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+/* Blog content styling */
+.blog-content h2 {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+  margin-top: 32px;
+}
+
+.blog-content h3 {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+  margin-top: 24px;
+}
+
+.blog-content p {
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  color: #374151;
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.blog-content ul {
+  margin-bottom: 16px;
+}
+
+.blog-content li {
+  display: flex;
+  align-items: flex-start;
+  color: #374151;
+  font-family: "Rethink Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  margin-bottom: 8px;
+}
+
+.blog-content li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #d50d0d;
+  border-radius: 50%;
+  margin-top: 8px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.blog-content strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+.blog-content em {
+  font-style: italic;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #d50d0d;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+  }
+
+  p,
+  li {
+    orphans: 2;
+    widows: 2;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+  .apply-h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .apply-h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .apply-body-large,
+  .apply-body-large-bold {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
